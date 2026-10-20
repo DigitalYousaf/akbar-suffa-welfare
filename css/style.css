@@ -36,9 +36,21 @@ h3{font-size:20px}
 /* ---------- Topbar ---------- */
 .topbar{background:var(--navy-dark);color:#c9d9ec;font-size:13.5px}
 .topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:7px;padding-bottom:7px;gap:14px;flex-wrap:wrap}
-.topbar a{color:#c9d9ec;margin-left:18px}
+.topbar a{color:#c9d9ec}
 .topbar a:hover{color:#fff}
-.topbar .social a{margin-left:12px;font-weight:700;color:#ffb3b6}
+.topbar .tcontact{display:flex;align-items:center;gap:20px}
+.topbar .tcontact a{display:inline-flex;align-items:center;gap:7px;font-weight:600}
+.topbar svg.tic{width:14px;height:14px;stroke:#ff9096;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.topbar .tsocial{display:flex;gap:8px;align-items:center}
+.topbar .tsocial a{width:29px;height:29px;border-radius:50%;border:1px solid rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;transition:.2s}
+.topbar .tsocial a:hover{background:var(--red);border-color:var(--red)}
+.topbar .tsocial svg{width:14px;height:14px;fill:#ffb3b6}
+.topbar .tsocial a:hover svg{fill:#fff}
+@media(max-width:680px){
+  .topbar .wrap{flex-wrap:nowrap;justify-content:space-between;padding-top:6px;padding-bottom:6px}
+  .topbar .tmail{display:none}
+  .topbar{font-size:13px}
+}
 /* ---------- Header ---------- */
 header.site{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 16px rgba(7,31,61,.09)}
 .nav{display:flex;align-items:center;gap:22px;min-height:84px;padding-top:8px;padding-bottom:8px}
@@ -190,3 +202,22 @@ footer.site .flogo img{height:46px;width:auto}
 .prose ul{margin:10px 0}
 .badge{display:inline-block;background:var(--red-soft);color:var(--red-dark);border-radius:999px;padding:4px 14px;font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
 .small{font-size:13px;color:var(--muted)}
+/* ---------- Contact info rows (premium icons, fixed alignment) ---------- */
+.cinfo{display:flex;flex-direction:column;gap:14px;margin-top:4px}
+.crow{display:flex;gap:13px;align-items:flex-start}
+.cicon{flex:0 0 40px;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15)}
+.cicon svg{width:19px;height:19px;stroke:#ff9096;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.crow .ctext{min-width:0;padding-top:2px}
+.crow .clabel{display:block;font-size:11.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#7e96b5;margin-bottom:1px}
+.crow .cval{color:#e4edf8;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.crow a.cval:hover{color:#ff9096}
+.bankcard{margin-top:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-radius:14px;padding:16px 18px}
+.bankcard .brow{display:flex;gap:13px;align-items:flex-start}
+.bankcard .blines{font-size:14.5px;color:#c9d9ec;line-height:1.55}
+.bankcard .blines b{color:#fff;font-size:15.5px}
+.bankcard .blines span{color:#8fa6c2}
+/* Light variant (contact page) */
+.cinfo.light .cicon{background:var(--red-soft);border-color:#f3d2d3}
+.cinfo.light .cicon svg{stroke:var(--red)}
+.cinfo.light .crow .clabel{color:#93a3b5}
+.cinfo.light .crow .cval{color:var(--ink);font-weight:600}

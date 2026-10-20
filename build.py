@@ -4,7 +4,7 @@ Design: logo colours (navy + red), full logo lockup header, expert copy, SEO."""
 import os, json
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-V = "v=2"
+V = "v=3"
 BASE = "https://akbar-suffa-welfare.vercel.app"
 
 PHONE = "0301-8451152"
@@ -89,8 +89,15 @@ def header():
     give_items = "\n".join(f'<li><a href="{u}">{n}</a></li>' for u, n, d in GIVING)
     return f"""
 <div class="topbar"><div class="wrap">
-  <div><a href="tel:+923018451152">📞 {PHONE}</a><a href="mailto:{EMAIL}">✉ {EMAIL}</a></div>
-  <div class="social"><a href="{FB}" target="_blank" rel="noopener">Facebook</a><a href="{TT}" target="_blank" rel="noopener">TikTok</a><a href="{IG}" target="_blank" rel="noopener">Instagram</a></div>
+  <div class="tcontact">
+    <a href="tel:+923018451152"><svg class="tic" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.25a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>{PHONE}</a>
+    <a class="tmail" href="mailto:{EMAIL}"><svg class="tic" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>{EMAIL}</a>
+  </div>
+  <div class="tsocial">
+    <a href="{FB}" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H8.5v3H11v7h2.5z"/></svg></a>
+    <a href="{TT}" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 3c.4 2.1 1.8 3.8 4 4.1v3c-1.6 0-3-.5-4-1.3v6.4c0 3.5-2.7 5.8-5.9 5.8a5.6 5.6 0 0 1-5.6-5.6c0-3.1 2.5-5.6 5.7-5.6.6 0 1.3.1 1.9.3v3.3c-.5-.3-1-.4-1.6-.4a2.4 2.4 0 0 0-2.4 2.4 2.4 2.4 0 0 0 2.4 2.4c1.4 0 2.5-1.1 2.5-2.6V3h3z"/></svg></a>
+    <a href="{IG}" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb3b6" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".4" fill="#ffb3b6"/></svg></a>
+  </div>
 </div></div>
 <header class="site"><div class="wrap nav">
   <a class="brand" href="index.html" aria-label="Akbar Suffa Welfare Society home page"><img src="assets/img/logo-full.png" alt="Akbar Suffa Welfare Society logo"></a>
@@ -125,8 +132,13 @@ def footer():
       <a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
     <div><h4>Islamic Giving</h4>{give_links}</div>
     <div><h4>Reach Us</h4>
-      <p>📍 {ADDRESS}</p><p>📞 {PHONE_INTL}</p><p>✉ {EMAIL}</p>
-      <p style="margin-top:10px">Donate: UBL Bank · A/C {UBL_ACC}<br>Title: Akbar Suffa Welfare Society</p></div>
+      <div class="cinfo">
+        <div class="crow"><span class="cicon"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="ctext"><span class="clabel">Visit Us</span><span class="cval">{ADDRESS}</span></span></div>
+        <div class="crow"><span class="cicon"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.25a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></span><span class="ctext"><span class="clabel">Call or WhatsApp</span><a class="cval" href="tel:+923018451152">{PHONE_INTL}</a></span></div>
+        <div class="crow"><span class="cicon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><span class="ctext"><span class="clabel">Email Us</span><a class="cval" href="mailto:{EMAIL}">{EMAIL}</a></span></div>
+      </div>
+      <div class="bankcard"><div class="brow"><span class="cicon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21v-8"/><path d="M9.5 21v-8"/><path d="M14.5 21v-8"/><path d="M19 21v-8"/><path d="m12 3 9 5H3l9-5z"/></svg></span><div class="blines"><b>Donate: UBL Bank</b><br><span>Account</span> {UBL_ACC}<br><span>Title</span> Akbar Suffa Welfare Society</div></div></div>
+    </div>
   </div>
   <div class="fbar"><span>© 2026 Akbar Suffa Welfare Society (R). All rights reserved.</span>
   <span>Baghban Pura · Lahore · Pakistan</span></div>
@@ -569,10 +581,12 @@ def contact():
 <main><section class="section"><div class="wrap"><div class="split" style="align-items:start">
   <div class="prose">
     <span class="eyebrow">Get In Touch</span><h2>Reach the Society</h2>
-    <p><b>Address:</b> {ADDRESS}</p>
-    <p><b>Phone / WhatsApp:</b> {PHONE_INTL}</p>
-    <p><b>Email:</b> {EMAIL}</p>
-    <p><b>President:</b> Malik Akbar Ali</p>
+    <div class="cinfo light" style="margin:20px 0 6px">
+      <div class="crow"><span class="cicon"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="ctext"><span class="clabel">Address</span><span class="cval">{ADDRESS}</span></span></div>
+      <div class="crow"><span class="cicon"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.25a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></span><span class="ctext"><span class="clabel">Phone / WhatsApp</span><a class="cval" href="tel:+923018451152">{PHONE_INTL}</a></span></div>
+      <div class="crow"><span class="cicon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><span class="ctext"><span class="clabel">Email</span><a class="cval" href="mailto:{EMAIL}">{EMAIL}</a></span></div>
+      <div class="crow"><span class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span><span class="ctext"><span class="clabel">President</span><span class="cval">Malik Akbar Ali</span></span></div>
+    </div>
     <p>For urgent funeral support, call or WhatsApp at any hour, our volunteer team responds day and night.</p>
     <p style="margin-top:16px"><a class="btn btn-navy" href="{WA}" target="_blank" rel="noopener">Chat on WhatsApp</a></p>
     <div style="margin-top:26px;border-radius:14px;overflow:hidden;border:1px solid var(--line)">

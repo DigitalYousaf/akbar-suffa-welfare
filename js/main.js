@@ -1,22 +1,49 @@
-// Mobile nav
-var burger = document.querySelector('.burger');
-var mainNav = document.querySelector('nav.main');
-if (burger && mainNav) {
-  burger.addEventListener('click', function () {
-    mainNav.classList.toggle('open');
-  });
-}
+// ---------- Navigation ----------
+(function () {
+  var burger = document.querySelector('.burger');
+  var mainNav = document.querySelector('nav.main');
+  if (!burger || !mainNav) return;
 
-// Count-up impact numbers
+  burger.addEventListener('click', function () {
+    var open = mainNav.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Mobile: tapping a parent item expands its submenu (accordion).
+  // Desktop: submenus open on hover via CSS; clicks navigate normally.
+  mainNav.querySelectorAll('li.has-drop > a.nl').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (window.innerWidth <= 1080) {
+        e.preventDefault();
+        var li = link.parentElement;
+        var wasOpen = li.classList.contains('expanded');
+        mainNav.querySelectorAll('li.expanded').forEach(function (x) { x.classList.remove('expanded'); });
+        if (!wasOpen) li.classList.add('expanded');
+      }
+    });
+  });
+
+  // Tapping any real link inside the mobile panel closes the panel.
+  mainNav.querySelectorAll('.drop a, a.nl:not(.parent-link)').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (window.innerWidth <= 1080) {
+        mainNav.classList.remove('open');
+        burger.classList.remove('open');
+      }
+    });
+  });
+})();
+
+// ---------- Count-up impact numbers ----------
 var counted = false;
 function countUp() {
   if (counted) return;
   var el = document.querySelector('.impact');
   if (!el) return;
-  var r = el.getBoundingClientRect();
-  if (r.top > window.innerHeight) return;
+  if (el.getBoundingClientRect().top > window.innerHeight) return;
   counted = true;
-  document.querySelectorAll('.impact .num').forEach(function (n) {
+  el.querySelectorAll('.num').forEach(function (n) {
     var target = parseInt(n.getAttribute('data-count'), 10) || 0;
     var start = null;
     function step(ts) {
@@ -31,19 +58,20 @@ function countUp() {
 window.addEventListener('scroll', countUp, { passive: true });
 countUp();
 
-// Donation / volunteer forms (demo: front-end only)
+// ---------- Demo forms ----------
 document.querySelectorAll('form.demo-form').forEach(function (f) {
   f.addEventListener('submit', function (e) {
     e.preventDefault();
     var t = f.querySelector('.thanks');
     if (t) { t.style.display = 'block'; t.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-    f.querySelectorAll('input,select,textarea').forEach(function (i) { i.value = ''; });
+    f.reset();
   });
 });
 
-// Donation amount picker
+// ---------- Donation amount picker ----------
 document.querySelectorAll('.amounts').forEach(function (box) {
-  var input = box.closest('form') ? box.closest('form').querySelector('[name=amount]') : null;
+  var form = box.closest('form');
+  var input = form ? form.querySelector('[name=amount]') : null;
   box.querySelectorAll('button').forEach(function (b) {
     b.addEventListener('click', function () {
       box.querySelectorAll('button').forEach(function (x) { x.classList.remove('sel'); });
@@ -53,17 +81,17 @@ document.querySelectorAll('.amounts').forEach(function (box) {
   });
 });
 
-// Zakat calculator
+// ---------- Zakat calculator ----------
 function calcZakat() {
   function v(id) { var e = document.getElementById(id); return e ? (parseFloat(e.value) || 0) : 0; }
   var goldPrice = v('zk-gold-price');
-  var nisab = 87.48 * goldPrice; // 7.5 tola gold
-  var wealth = v('zk-cash') + v('zk-gold-val') + v('zk-silver-val') + v('zk-business') - v('zk-debts');
   var out = document.getElementById('zk-out');
   if (!out) return;
-  if (goldPrice <= 0) { out.innerHTML = 'Please enter today\'s gold price per tola to calculate.'; return; }
+  if (goldPrice <= 0) { out.innerHTML = 'Please enter today\'s gold price per tola to calculate your Zakat.'; return; }
+  var nisab = 87.48 * goldPrice;
+  var wealth = v('zk-cash') + v('zk-gold-val') + v('zk-silver-val') + v('zk-business') - v('zk-debts');
   if (wealth < nisab) {
-    out.innerHTML = 'Your total zakat-able wealth is <b>Rs ' + wealth.toLocaleString('en-US') + '</b>, which is below the nisab of <b>Rs ' + Math.round(nisab).toLocaleString('en-US') + '</b>. Zakat is not obligatory on this amount — but any Sadaqah you give is still a great reward.';
+    out.innerHTML = 'Your zakat-able wealth is <b>Rs ' + Math.round(wealth).toLocaleString('en-US') + '</b> — below the nisab of <b>Rs ' + Math.round(nisab).toLocaleString('en-US') + '</b>. Zakat is not obligatory on this amount, though any Sadaqah you give still carries great reward.';
     return;
   }
   var zakat = wealth * 0.025;

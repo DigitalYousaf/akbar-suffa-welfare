@@ -4,7 +4,7 @@ Design: logo colours (navy + red), full logo lockup header, expert copy, SEO."""
 import os, json
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-V = "v=8"
+V = "v=9"
 BASE = "https://akbar-suffa-welfare.vercel.app"
 
 PHONE = "0301-8451152"
@@ -30,7 +30,7 @@ PROJECTS = [
      "Fresh, warm meals served daily with dignity. Pay a token amount if you can, eat free if you cannot. Nobody can tell the difference."),
     ("project-employment.html", "Employment Opportunities", "assets/img/svc-employment.jpg",
      "We help unemployed youth and needy families start earning through food carts and small setups, so a family can stand on its own feet."),
-    ("project-dispensary.html", "Suffa Free Dispensary", None,
+    ("project-dispensary.html", "Suffa Free Dispensary", "assets/img/svc-dispensary.jpg",
      "Free check-ups and essential medicines for patients who would otherwise go untreated, because healthcare should not depend on a wallet."),
 ]
 
@@ -42,6 +42,16 @@ GCARDS = {
     "project-dastarkhwan.html": "gcard-dastarkhwan.jpg",
     "project-employment.html": "gcard-employment.jpg",
     "project-dispensary.html": "gcard-dispensary.jpg",
+}
+
+CARDMETA = {
+    "project-funeral.html": ("Funeral Services", "850+", "dignified burials"),
+    "project-education.html": ("Education", "320+", "children studying free"),
+    "project-elderly.html": ("Elderly Care", "150+", "mothers supported monthly"),
+    "project-oldage.html": ("Shelter & Care", "40+", "elders under our care"),
+    "project-dastarkhwan.html": ("Food", "45,000+", "meals served"),
+    "project-employment.html": ("Rozgar", "120+", "families helped to earn"),
+    "project-dispensary.html": ("Health", "300+", "patients treated monthly"),
 }
 
 GIVING = [
@@ -183,7 +193,8 @@ def write(name, html):
 def home():
     cards = []
     for url, name, img, desc in PROJECTS:
-        cards.append(f'<article class="card"><a href="{url}"><img class="gfx" src="assets/img/{GCARDS[url]}" alt="{name}, Akbar Suffa Welfare Society, Lahore" loading="lazy"></a><div class="body"><h3>{name}</h3><p>{desc}</p><a class="more" href="{url}">Learn more →</a></div></article>')
+        chip, snum, slab = CARDMETA[url]
+        cards.append(f'<article class="card"><div class="media"><a href="{url}"><img src="{img}" alt="{name}, Akbar Suffa Welfare Society, Lahore" loading="lazy"></a><span class="chip">{chip}</span></div><div class="body"><h3>{name}</h3><p>{desc}</p><div class="foot"><span class="stat"><b>{snum}</b> {slab}</span><a class="more" href="{url}">Learn more →</a></div></div></article>')
     give = "\n".join(f'<article class="card"><div class="body"><h3>{n}</h3><p>{d}</p><a class="more" href="{u}">Give now →</a></div></article>' for u, n, d in GIVING[:3])
     body = f"""
 <main>
@@ -285,7 +296,8 @@ def about():
 def projects_page():
     cards = []
     for url, name, img, desc in PROJECTS:
-        cards.append(f'<article class="card"><a href="{url}"><img class="gfx" src="assets/img/{GCARDS[url]}" alt="{name}, Akbar Suffa Welfare Society" loading="lazy"></a><div class="body"><h3>{name}</h3><p>{desc}</p><a class="more" href="{url}">Full details →</a></div></article>')
+        chip, snum, slab = CARDMETA[url]
+        cards.append(f'<article class="card"><div class="media"><a href="{url}"><img src="{img}" alt="{name}, Akbar Suffa Welfare Society" loading="lazy"></a><span class="chip">{chip}</span></div><div class="body"><h3>{name}</h3><p>{desc}</p><div class="foot"><span class="stat"><b>{snum}</b> {slab}</span><a class="more" href="{url}">Full details →</a></div></div></article>')
     body = pagehero("Our Projects", "Seven projects running today in Lahore. Each one answers a real cry for help in our community.") + f"""
 <main><section class="section"><div class="wrap"><div class="cards">{''.join(cards)}</div>
 <div style="margin-top:46px">{donate_band()}</div></div></section></main>"""

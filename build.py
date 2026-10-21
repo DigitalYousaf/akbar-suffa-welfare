@@ -4,7 +4,7 @@ Design: logo colours (navy + red), full logo lockup header, expert copy, SEO."""
 import os, json
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-V = "v=5"
+V = "v=6"
 BASE = "https://akbar-suffa-welfare.vercel.app"
 
 PHONE = "0301-8451152"
@@ -18,16 +18,18 @@ TT = "https://www.tiktok.com/@akbarsuffawelfaresociety"
 IG = "https://www.instagram.com/akbar.suffa.welfare.society"
 
 PROJECTS = [
-    ("project-funeral.html", "Unclaimed Funeral Support", "assets/img/funeral-work.jpg",
+    ("project-funeral.html", "Unclaimed Funeral Support", "assets/img/svc-funeral.jpg",
      "When someone dies with no family, no money and no one to claim them, we step in as family, ghusl, kafan, janaza and a dignified burial, completely free."),
-    ("project-education.html", "Free Education for Poor Children", "assets/img/education-1.jpg",
+    ("project-education.html", "Free Education for Poor Children", "assets/img/svc-education.jpg",
      "Free schooling, books and mentorship for children whose parents cannot afford fees, because poverty should never decide a child's future."),
-    ("project-elderly.html", "Monthly Support for Elderly Women", "assets/img/elderly.jpg",
+    ("project-elderly.html", "Monthly Support for Elderly Women", "assets/img/svc-elderly.jpg",
      "A fixed monthly stipend, delivered with respect, so widowed and elderly mothers never have to beg for food, medicine or rent."),
-    ("project-oldage.html", "Old Age Care & Shelter", "assets/img/oldage.jpg",
+    ("project-oldage.html", "Old Age Care & Shelter", "assets/img/svc-oldage.jpg",
      "Food, care and shelter for elderly people left entirely alone, so no elder of our community spends their final years abandoned."),
-    ("project-dastarkhwan.html", "Suffa Sasta Dastarkhwan", "assets/img/dastarkhwan.jpg",
+    ("project-dastarkhwan.html", "Suffa Sasta Dastarkhwan", "assets/img/svc-dastarkhwan.jpg",
      "Fresh, warm meals served daily with dignity. Pay a token amount if you can, eat free if you cannot. Nobody can tell the difference."),
+    ("project-employment.html", "Employment Opportunities", "assets/img/svc-employment.jpg",
+     "We help unemployed youth and needy families start earning through food carts and small setups, so a family can stand on its own feet."),
     ("project-dispensary.html", "Suffa Free Dispensary", None,
      "Free check-ups and essential medicines for patients who would otherwise go untreated, because healthcare should not depend on a wallet."),
 ]
@@ -180,7 +182,7 @@ def home():
   <img class="bgimg" src="assets/img/hero-janaza.jpg" alt="Volunteers of Akbar Suffa Welfare Society offering janaza prayer for an unclaimed deceased in Lahore">
   <div class="shade"></div>
   <div class="wrap">
-    <span class="kick">Registered Welfare Society · Lahore</span>
+    <span class="kick">Registered Welfare Society</span>
     <h1>No One Should Leave This World <em>Alone</em></h1>
     <p>When a person dies in Lahore with no family, no money and no one to claim them, we become their family. And while they live, we feed them, teach their children, and care for their mothers. That is the work your donation makes possible.</p>
     <div class="hero-btns"><a class="btn btn-red" href="donate.html">Donate Now</a><a class="btn btn-ghost-w" href="projects.html">See Our Work</a></div>
@@ -208,7 +210,7 @@ def home():
   </div>
 </div></div></section>
 <section class="section alt"><div class="wrap">
-  <div class="sec-head"><span class="eyebrow">What We Do</span><h2>Six Projects. One Mission.</h2>
+  <div class="sec-head"><span class="eyebrow">What We Do</span><h2>Seven Projects. One Mission.</h2>
   <p>Every project answers a real cry for help in our community, and every one of them runs on your generosity.</p></div>
   <div class="cards">{''.join(cards)}</div>
 </div></section>
@@ -276,18 +278,19 @@ def projects_page():
     for url, name, img, desc in PROJECTS:
         media = f'<img src="{img}" alt="{name}, Akbar Suffa Welfare Society" loading="lazy">' if img else '<div class="icon">🩺</div>'
         cards.append(f'<article class="card">{media}<div class="body"><h3>{name}</h3><p>{desc}</p><a class="more" href="{url}">Full details →</a></div></article>')
-    body = pagehero("Our Projects", "Six projects running today in Lahore. Each one answers a real cry for help in our community.") + f"""
+    body = pagehero("Our Projects", "Seven projects running today in Lahore. Each one answers a real cry for help in our community.") + f"""
 <main><section class="section"><div class="wrap"><div class="cards">{''.join(cards)}</div>
 <div style="margin-top:46px">{donate_band()}</div></div></section></main>"""
     return head("Our Projects: Burials, Education, Elderly Care and More",
-                "Explore the six welfare projects of Akbar Suffa Welfare Society, Lahore: unclaimed funeral support, free education, elderly women stipends, old age care, Sasta Dastarkhwan and a free dispensary.",
+                "Explore the seven welfare projects of Akbar Suffa Welfare Society, Lahore: unclaimed funeral support, free education, elderly women stipends, old age care, Sasta Dastarkhwan and a free dispensary.",
                 "projects.html") + header() + body + footer()
 
 
 PROJECT_DETAILS = {
     "project-funeral.html": dict(
         title="Unclaimed Funeral Support",
-        img="assets/img/funeral-work.jpg",
+        img="assets/img/svc-funeral.jpg",
+        poster="assets/img/poster2-funeral.jpg",
         intro="Our signature project. When a person dies in a Lahore hospital or on its streets with no family, no money and no one to claim the body, our volunteers step in as family.",
         paras=[
             "Every week, hospitals and police stations across Lahore call us about unclaimed and destitute deceased. Without a service like ours, these bodies face delay, indignity, or burial without rites, without a name, without a single prayer.",
@@ -297,7 +300,8 @@ PROJECT_DETAILS = {
         stat=("850+", "dignified burials arranged so far")),
     "project-education.html": dict(
         title="Free Education for Poor Children",
-        img="assets/img/education-2.jpg",
+        img="assets/img/svc-education.jpg",
+        poster="assets/img/poster2-education.jpg",
         intro="Education is the only lasting exit from poverty. We give free schooling, books and mentorship to children whose families cannot afford any of it.",
         paras=[
             "Through Suffa Educators and partner teachers, enrolled children receive regular classes, books, stationery and mentorship. Their progress is celebrated publicly, with awards for top performers, so the whole neighbourhood learns to honour learning.",
@@ -306,7 +310,8 @@ PROJECT_DETAILS = {
         stat=("320+", "children currently studying free")),
     "project-elderly.html": dict(
         title="Monthly Support for Elderly Women",
-        img="assets/img/elderly.jpg",
+        img="assets/img/svc-elderly.jpg",
+        poster="assets/img/poster2-elderly.jpg",
         intro="Many elderly and widowed mothers in our area have outlived everyone who earned for them. A fixed monthly stipend protects what matters most to them: their dignity.",
         paras=[
             "Every beneficiary is verified by our local team and receives her monthly amount directly, privately and with respect. It covers the essentials: food, basic medicines and household needs.",
@@ -315,7 +320,7 @@ PROJECT_DETAILS = {
         stat=("150+", "elderly women supported every month")),
     "project-oldage.html": dict(
         title="Old Age Care & Shelter",
-        img="assets/img/oldage.jpg",
+        img="assets/img/svc-oldage.jpg",
         intro="Some elderly people are left entirely alone, children gone, house empty, health failing. We arrange the care, food and shelter that make their final years safe.",
         paras=[
             "Residents under our care receive daily meals, basic medical attention through our dispensary, and safe shelter arrangements with trusted local partners.",
@@ -324,13 +329,24 @@ PROJECT_DETAILS = {
         stat=("40+", "elders under regular care")),
     "project-dastarkhwan.html": dict(
         title="Suffa Sasta Dastarkhwan",
-        img="assets/img/dastarkhwan.jpg",
+        img="assets/img/svc-dastarkhwan.jpg",
+        poster="assets/img/poster2-dastarkhwan.jpg",
         intro="A dining spread where labourers, travellers, students and the poor sit down to fresh, warm food, with respect, and never with questions.",
         paras=[
             "Hunger strips dignity faster than anything. At Suffa Sasta Dastarkhwan the rule is simple: pay a token amount if you can, eat completely free if you cannot, and nobody can tell the difference.",
             "The dastarkhwan also serves at funerals, community events and Ramadan iftars across Baghban Pura. Sponsoring one full day of meals is one of the most beloved forms of Sadaqah Jariyah among our donors."],
         points=["Fresh cooked meals, served daily", "Free for anyone who cannot pay", "Open to labourers, travellers & students", "Ramadan iftar arrangements", "Sponsor a full day of meals"],
         stat=("45,000+", "meals served with dignity")),
+    "project-employment.html": dict(
+        title="Employment Opportunities",
+        img="assets/img/svc-employment.jpg",
+        poster="assets/img/poster2-employment.jpg",
+        intro="Unemployment destroys dignity quietly. We help jobless youth and needy families start earning, through food carts, stalls and small business setups that put a family on its own feet.",
+        paras=[
+            "Through this project, a deserving applicant receives a ready to run food cart or small setup, starting stock, and on ground guidance from our team. No loans, no interest, no humiliation. Just an honest chance to earn.",
+            "It is the kind of charity that ends the need for charity: one cart feeds one family every day, for years. Sponsoring a complete rozgar setup for a struggling family is one of the most powerful forms of Sadaqah Jariyah we offer."],
+        points=["Ready to run food carts & small setups", "Starting stock included", "Verified deserving applicants only", "Follow up support from our team"],
+        stat=("120+", "families helped toward self employment")),
     "project-dispensary.html": dict(
         title="Suffa Free Dispensary",
         img=None,
@@ -345,13 +361,14 @@ PROJECT_DETAILS = {
 
 def project_detail(url):
     d = PROJECT_DETAILS[url]
+    poster_h = f'<img class="poster-img" src="{d["poster"]}" alt="{d["title"]} official poster, Akbar Suffa Welfare Society" loading="lazy">' if d.get("poster") else ""
     media = f'<img src="{d["img"]}" alt="{d["title"]}, Akbar Suffa Welfare Society, Lahore" loading="lazy">' if d["img"] else '<div class="icon" style="font-size:110px;text-align:center;padding:60px 0">🩺</div>'
     paras = "\n".join(f"<p>{p}</p>" for p in d["paras"])
     points = "\n".join(f"<li>{p}</li>" for p in d["points"])
     body = pagehero(d["title"], d["intro"]) + f"""
 <main><section class="section"><div class="wrap"><div class="split" style="align-items:start">
   <div>{media}
-    <div class="calc" style="margin-top:22px;padding:22px"><div class="result" style="margin:0"><span class="big">{d['stat'][0]}</span><br>{d['stat'][1]}</div></div>
+    <div class="calc" style="margin-top:22px;padding:22px"><div class="result" style="margin:0"><span class="big">{d['stat'][0]}</span><br>{d['stat'][1]}</div></div>{poster_h}
   </div>
   <div class="prose"><span class="eyebrow">Project Detail</span><h2>About This Project</h2>{paras}
     <h3 style="margin-top:22px">What Your Support Provides</h3>

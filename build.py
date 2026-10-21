@@ -4,7 +4,7 @@ Design: logo colours (navy + red), full logo lockup header, expert copy, SEO."""
 import os, json
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-V = "v=6"
+V = "v=7"
 BASE = "https://akbar-suffa-welfare.vercel.app"
 
 PHONE = "0301-8451152"
@@ -33,6 +33,16 @@ PROJECTS = [
     ("project-dispensary.html", "Suffa Free Dispensary", None,
      "Free check-ups and essential medicines for patients who would otherwise go untreated, because healthcare should not depend on a wallet."),
 ]
+
+GCARDS = {
+    "project-funeral.html": "gcard-funeral.jpg",
+    "project-education.html": "gcard-education.jpg",
+    "project-elderly.html": "gcard-elderly.jpg",
+    "project-oldage.html": "gcard-oldage.jpg",
+    "project-dastarkhwan.html": "gcard-dastarkhwan.jpg",
+    "project-employment.html": "gcard-employment.jpg",
+    "project-dispensary.html": "gcard-dispensary.jpg",
+}
 
 GIVING = [
     ("zakat.html", "Zakat", "Calculate your Zakat in minutes and pay it to verified deserving families, 100% distribution, zero admin deduction."),
@@ -173,8 +183,7 @@ def write(name, html):
 def home():
     cards = []
     for url, name, img, desc in PROJECTS:
-        media = f'<img src="{img}" alt="{name}, Akbar Suffa Welfare Society, Lahore" loading="lazy">' if img else '<div class="icon">🩺</div>'
-        cards.append(f'<article class="card">{media}<div class="body"><h3>{name}</h3><p>{desc}</p><a class="more" href="{url}">Learn more →</a></div></article>')
+        cards.append(f'<a class="gcard" href="{url}"><img src="assets/img/{GCARDS[url]}" alt="{name}, Akbar Suffa Welfare Society, Lahore" loading="lazy"></a>')
     give = "\n".join(f'<article class="card"><div class="body"><h3>{n}</h3><p>{d}</p><a class="more" href="{u}">Give now →</a></div></article>' for u, n, d in GIVING[:3])
     body = f"""
 <main>
@@ -276,8 +285,7 @@ def about():
 def projects_page():
     cards = []
     for url, name, img, desc in PROJECTS:
-        media = f'<img src="{img}" alt="{name}, Akbar Suffa Welfare Society" loading="lazy">' if img else '<div class="icon">🩺</div>'
-        cards.append(f'<article class="card">{media}<div class="body"><h3>{name}</h3><p>{desc}</p><a class="more" href="{url}">Full details →</a></div></article>')
+        cards.append(f'<a class="gcard" href="{url}"><img src="assets/img/{GCARDS[url]}" alt="{name}, Akbar Suffa Welfare Society" loading="lazy"></a>')
     body = pagehero("Our Projects", "Seven projects running today in Lahore. Each one answers a real cry for help in our community.") + f"""
 <main><section class="section"><div class="wrap"><div class="cards">{''.join(cards)}</div>
 <div style="margin-top:46px">{donate_band()}</div></div></section></main>"""

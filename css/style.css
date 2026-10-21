@@ -231,3 +231,7 @@ footer.site .flogo img{height:46px;width:auto}
 .cinfo.light .crow .cval{color:var(--ink);font-weight:600}
 .poster-img{border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-sm);margin-top:22px;width:100%}
 @media(max-width:400px){.hero .kick{font-size:9.5px;letter-spacing:.05em;padding:5px 11px}}
+/* Graphic service cards (poster style) */
+.gcard{display:block;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);transition:.22s;background:#fff}
+.gcard:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.gcard img{width:100%;height:auto;display:block}

@@ -48,6 +48,17 @@ h3{font-size:20px}
 @media(max-width:680px){
   .topbar .wrap{flex-wrap:nowrap;justify-content:space-between;padding-top:6px;padding-bottom:6px}
 }
+/* ---------- Mobile hero polish ---------- */
+@media(max-width:640px){
+  .hero .wrap{padding-top:62px;padding-bottom:92px}
+  .hero .kick{font-size:10.5px;letter-spacing:.07em;padding:6px 13px;white-space:nowrap;max-width:100%;margin-bottom:16px}
+  .hero h1{font-size:36px}
+  .hero p{font-size:16.5px;margin:14px 0 24px}
+  .hero .trustrow{gap:8px 18px;margin-top:26px;font-size:12.5px}
+  .story .kick{font-size:11px;white-space:nowrap}
+  .pagehero{padding:48px 0}
+  .section{padding:56px 0}
+}
 /* ---------- Header ---------- */
 header.site{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 16px rgba(7,31,61,.09)}
 .nav{display:flex;align-items:center;gap:22px;min-height:84px;padding-top:8px;padding-bottom:8px}

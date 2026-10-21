@@ -4,7 +4,7 @@ Design: logo colours (navy + red), full logo lockup header, expert copy, SEO."""
 import os, json
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-V = "v=4"
+V = "v=5"
 BASE = "https://akbar-suffa-welfare.vercel.app"
 
 PHONE = "0301-8451152"

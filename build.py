@@ -4,7 +4,7 @@ Design: logo colours (navy + red), full logo lockup header, expert copy, SEO."""
 import os, json
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-V = "v=9"
+V = "v=10"
 BASE = "https://akbar-suffa-welfare.vercel.app"
 
 PHONE = "0301-8451152"
@@ -236,10 +236,16 @@ def home():
 </div></section>
 <section class="section"><div class="wrap">
   <div class="story">
-    <div><span class="kick">Our Signature Work</span>
-      <h2>Aakhri Izzat: <em>The Last Honour</em></h2>
-      <p style="margin-top:14px">He had no name in the hospital register. No family came forward. For three days, nobody claimed him. Then our volunteers arrived. They washed him with the care they would give their own father, wrapped him in a clean kafan, carried him on their own shoulders, gathered a congregation for his janaza, and buried him in a proper, marked grave.</p>
-      <p>Every week, men and women who die unknown in this city receive the farewell every human being deserves. This is what your Sadaqah does here.</p>
+    <div><span class="kick">How It Works</span>
+      <h2>What Happens When <em>We Get the Call</em></h2>
+      <p style="margin-top:14px">It usually starts with one phone call. A hospital, a police station, or sometimes a stranger on the street. From that moment, everything becomes our responsibility.</p>
+      <div class="steps">
+        <div class="step"><span class="snum">1</span><div><h4>The Call Comes In</h4><p>A hospital or police station calls us, day or night. A body has no one. We say yes first, and ask questions later.</p></div></div>
+        <div class="step"><span class="snum">2</span><div><h4>Our Team Reaches</h4><p>Our volunteers complete the legal handover, and bring the body in our own vehicle, covered, and with full respect.</p></div></div>
+        <div class="step"><span class="snum">3</span><div><h4>Ghusl, Kafan and Janaza</h4><p>We wash the body properly, wrap it in a clean kafan, and arrange the janaza. Our volunteers carry it on their own shoulders, like family.</p></div></div>
+        <div class="step"><span class="snum">4</span><div><h4>A Proper Grave, and Dua</h4><p>We bury the body in a proper, marked grave, and raise our hands in dua at the end. Alone in this world, but not alone at the farewell.</p></div></div>
+      </div>
+      <p style="margin-top:16px">From the first call to the final dua, one complete farewell costs about <b style="color:#fff">Rs 30,000</b>. Your Sadaqah can cover it fully.</p>
       <p style="margin-top:20px"><a class="btn btn-red" href="project-funeral.html">About This Project</a></p>
     </div>
     <img src="assets/img/poster-funeral.jpg" alt="Funeral prayer gathering arranged by Akbar Suffa Welfare Society" loading="lazy">
@@ -502,7 +508,7 @@ def donate():
       <div class="notebox" style="margin-top:24px"><b>What your money does:</b><br>
       <b>Rs 1,000</b>, one day of dastarkhwan meals for the poor<br>
       <b>Rs 3,500</b>, one elderly mother's full monthly stipend<br>
-      <b>Rs 5,000</b>, one complete dignified burial: ghusl, kafan, janaza, grave<br>
+      <b>Rs 30,000</b>, one complete dignified burial: ghusl, kafan, janaza, grave<br>
       <b>Rs 12,000</b>, one child's full year of education support</div>
     </div>
     <form class="form demo-form" action="#" method="post">
@@ -514,7 +520,7 @@ def donate():
       <label>Project</label>
       <select name="project"><option>Where most needed</option><option>Unclaimed Funeral Support</option><option>Free Education</option><option>Elderly Women Support</option><option>Old Age Care & Shelter</option><option>Sasta Dastarkhwan</option><option>Free Dispensary</option></select>
       <label>Select Amount (PKR)</label>
-      <div class="amounts"><button type="button" data-amt="1000">Rs 1,000</button><button type="button" data-amt="3500">Rs 3,500</button><button type="button" data-amt="5000">Rs 5,000</button><button type="button" data-amt="12000">Rs 12,000</button></div>
+      <div class="amounts"><button type="button" data-amt="1000">Rs 1,000</button><button type="button" data-amt="5000">Rs 5,000</button><button type="button" data-amt="15000">Rs 15,000</button><button type="button" data-amt="30000">Rs 30,000 (Full Burial)</button></div>
       <label>Or Enter Your Amount</label><input type="number" name="amount" min="10" placeholder="e.g. 2000">
       <label style="display:flex;gap:10px;align-items:center;font-weight:600"><input type="checkbox" name="monthly" style="width:auto"> Make it monthly (become a Monthly Saathi)</label>
       <p style="margin-top:18px"><button class="btn btn-red" type="submit" style="width:100%">Confirm My Donation</button></p>
@@ -523,7 +529,7 @@ def donate():
   </div>
 </div></section></main>"""
     return head("Donate, Zakat, Sadaqah & General Charity",
-                "Donate to Akbar Suffa Welfare Society, Lahore: Zakat, Sadaqah, Sadaqah Jariyah, Fitrana & general charity via UBL bank transfer. Rs 5,000 funds one complete dignified burial.",
+                "Donate to Akbar Suffa Welfare Society, Lahore: Zakat, Sadaqah, Sadaqah Jariyah, Fitrana & general charity via UBL bank transfer. Rs 30,000 funds one complete dignified burial.",
                 "donate.html") + header() + body + footer()
 
 
@@ -594,7 +600,7 @@ def article_page(url):
             "Every week in Lahore, people die unknown. An accident victim carrying no ID. An elderly labourer hundreds of miles from his village. A patient in a public hospital whose family cannot be traced. Their bodies wait in mortuaries, and without someone to claim them, their final journey can be delayed, stripped of dignity, or completed without the rites every Muslim deserves.",
             "Islam honours the dead exactly as it honours the living. Ghusl (washing), kafan (shrouding), janaza (the funeral prayer) and a proper grave are not optional extras. They are rights, of the poorest stranger exactly as much as of the richest citizen.",
             "This is the work Akbar Suffa Welfare Society was founded to do. Our volunteers coordinate with hospitals and police, perform every rite with trained hands, gather a congregation for the janaza, and bury each person in a proper, marked grave. And for poor families who simply cannot afford a funeral, we quietly cover the cost, so grief is never mixed with shame.",
-            "One complete, dignified farewell costs around Rs 5,000. Given as Sadaqah Jariyah for your own parents, there are few gifts more meaningful, and few more needed."]
+            "One complete, dignified farewell costs around Rs 30,000. Given as Sadaqah Jariyah for your own parents, there are few gifts more meaningful, and few more needed."]
         cta = ("project-funeral.html", "See the Funeral Support Project")
     else:
         paras = [

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card Design Samples | Akbar Suffa Welfare Society</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0c2d54;--navy-dark:#071f3d;--red:#c0272d;--red-soft:#fdeeee;--ink:#1b2735;--muted:#5a6a7b;--line:#dde5ee;--bg:#f5f8fc}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:26px 18px 60px}
+h1{font-size:24px;color:var(--navy-dark);text-align:center}
+.sub{text-align:center;color:var(--muted);margin:8px 0 8px;font-size:15px}
+.opt{display:flex;align-items:center;gap:12px;margin:38px 0 18px}
+.opt .tag{background:var(--red);color:#fff;font-weight:800;font-size:13px;letter-spacing:.1em;padding:6px 14px;border-radius:999px}
+.opt h2{font-size:20px;color:var(--navy-dark)}
+.opt p{color:var(--muted);font-size:14px}
+.stack{display:grid;gap:20px}
+/* ===== OPTION A: editorial ===== */
+.cardA{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 4px 14px rgba(7,31,61,.06)}
+.cardA img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block}
+.cardA .body{padding:22px 24px 20px}
+.cardA .kick{color:var(--red);font-size:11.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.cardA h3{font-size:20px;color:var(--navy-dark);margin:6px 0 8px}
+.cardA .body p{color:var(--muted);font-size:15px}
+.cardA .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);margin-top:16px;padding-top:14px;flex-wrap:wrap}
+.cardA .stat{font-weight:800;color:var(--navy);font-size:14.5px}
+.cardA .stat span{color:var(--red)}
+.cardA .more{font-weight:800;color:var(--red);font-size:15px;text-decoration:none}
+/* ===== OPTION B: text first ===== */
+.cardB{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 4px 14px rgba(7,31,61,.06);padding:22px;display:flex;gap:20px}
+.cardB .thumb{flex:0 0 128px}
+.cardB .thumb img{width:128px;height:128px;object-fit:cover;border-radius:14px;display:block}
+.cardB .txt{min-width:0}
+.cardB .kick{color:var(--red);font-size:11.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.cardB h3{font-size:19.5px;color:var(--navy-dark);margin:5px 0 7px}
+.cardB .txt p{color:var(--muted);font-size:14.5px}
+.cardB ul{list-style:none;margin-top:10px}
+.cardB ul li{position:relative;padding:3px 0 3px 26px;font-size:14.5px;color:#37434f}
+.cardB ul li::before{content:"✓";position:absolute;left:0;top:3px;width:19px;height:19px;border-radius:50%;background:var(--red);color:#fff;font-size:11.5px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.cardB .more{display:inline-block;margin-top:12px;font-weight:800;color:var(--red);font-size:15px;text-decoration:none}
+@media(max-width:560px){
+  .cardB{flex-direction:column;padding:18px}
+  .cardB .thumb{flex:none}
+  .cardB .thumb img{width:100%;height:170px}
+}
+.note{background:#fff;border:1px dashed #b9cfe6;border-radius:14px;padding:16px 20px;margin-top:40px;text-align:center;color:var(--navy-dark);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Project Card Designs</h1>
+  <p class="sub">Two samples with your real pictures and text. See both, then tell me A or B.</p>
+
+  <div class="opt"><span class="tag">OPTION A</span><div><h2>Picture Top, Text Below</h2><p>Editorial style. Designed text area under the photo.</p></div></div>
+  <div class="stack">
+    <article class="cardA">
+      <img src="assets/img/svc-funeral.jpg" alt="Unclaimed Funeral Support">
+      <div class="body">
+        <span class="kick">Funeral Services</span>
+        <h3>Unclaimed Funeral Support</h3>
+        <p>When someone dies with no family, no money and no one to claim them, we step in as family. Ghusl, kafan, janaza and a dignified burial, completely free.</p>
+        <div class="foot"><span class="stat"><span>850+</span> dignified burials</span><a class="more" href="#">Learn more →</a></div>
+      </div>
+    </article>
+    <article class="cardA">
+      <img src="assets/img/svc-education.jpg" alt="Free Education for Poor Children">
+      <div class="body">
+        <span class="kick">Education</span>
+        <h3>Free Education for Poor Children</h3>
+        <p>Free schooling, books and mentorship for children whose parents cannot afford fees, because poverty should never decide a child's future.</p>
+        <div class="foot"><span class="stat"><span>320+</span> children studying free</span><a class="more" href="#">Learn more →</a></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="opt"><span class="tag">OPTION B</span><div><h2>Text First, Picture on the Side</h2><p>Brochure style. Text is the hero, picture supports it.</p></div></div>
+  <div class="stack">
+    <article class="cardB">
+      <div class="thumb"><img src="assets/img/svc-funeral.jpg" alt="Unclaimed Funeral Support"></div>
+      <div class="txt">
+        <span class="kick">Funeral Services</span>
+        <h3>Unclaimed Funeral Support</h3>
+        <p>When someone dies with no family, no money and no one to claim them, we step in as family and arrange the complete funeral.</p>
+        <ul><li>Full ghusl, kafan and janaza</li><li>Completely free for the unclaimed and the poor</li></ul>
+        <a class="more" href="#">Learn more →</a>
+      </div>
+    </article>
+    <article class="cardB">
+      <div class="thumb"><img src="assets/img/svc-education.jpg" alt="Free Education for Poor Children"></div>
+      <div class="txt">
+        <span class="kick">Education</span>
+        <h3>Free Education for Poor Children</h3>
+        <p>Free schooling, books and mentorship for children whose parents cannot afford fees.</p>
+        <ul><li>Books, bags and stationery included</li><li>Special focus on girls' education</li></ul>
+        <a class="more" href="#">Learn more →</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="note">Reply A or B on WhatsApp, and I will rebuild all project cards in that style.</div>
+</div>
+</body>
+</html>

@@ -4,7 +4,7 @@ Design: logo colours (navy + red), full logo lockup header, expert copy, SEO."""
 import os, json
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-V = "v=7"
+V = "v=8"
 BASE = "https://akbar-suffa-welfare.vercel.app"
 
 PHONE = "0301-8451152"
@@ -183,7 +183,7 @@ def write(name, html):
 def home():
     cards = []
     for url, name, img, desc in PROJECTS:
-        cards.append(f'<a class="gcard" href="{url}"><img src="assets/img/{GCARDS[url]}" alt="{name}, Akbar Suffa Welfare Society, Lahore" loading="lazy"></a>')
+        cards.append(f'<article class="card"><a href="{url}"><img class="gfx" src="assets/img/{GCARDS[url]}" alt="{name}, Akbar Suffa Welfare Society, Lahore" loading="lazy"></a><div class="body"><h3>{name}</h3><p>{desc}</p><a class="more" href="{url}">Learn more →</a></div></article>')
     give = "\n".join(f'<article class="card"><div class="body"><h3>{n}</h3><p>{d}</p><a class="more" href="{u}">Give now →</a></div></article>' for u, n, d in GIVING[:3])
     body = f"""
 <main>
@@ -285,7 +285,7 @@ def about():
 def projects_page():
     cards = []
     for url, name, img, desc in PROJECTS:
-        cards.append(f'<a class="gcard" href="{url}"><img src="assets/img/{GCARDS[url]}" alt="{name}, Akbar Suffa Welfare Society" loading="lazy"></a>')
+        cards.append(f'<article class="card"><a href="{url}"><img class="gfx" src="assets/img/{GCARDS[url]}" alt="{name}, Akbar Suffa Welfare Society" loading="lazy"></a><div class="body"><h3>{name}</h3><p>{desc}</p><a class="more" href="{url}">Full details →</a></div></article>')
     body = pagehero("Our Projects", "Seven projects running today in Lahore. Each one answers a real cry for help in our community.") + f"""
 <main><section class="section"><div class="wrap"><div class="cards">{''.join(cards)}</div>
 <div style="margin-top:46px">{donate_band()}</div></div></section></main>"""

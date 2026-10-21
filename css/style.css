@@ -235,3 +235,4 @@ footer.site .flogo img{height:46px;width:auto}
 .gcard{display:block;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);transition:.22s;background:#fff}
 .gcard:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
 .gcard img{width:100%;height:auto;display:block}
+.card img.gfx{height:auto;aspect-ratio:1/1;object-fit:cover}
